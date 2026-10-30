@@ -1,0 +1,359 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Windows 11 一键部署 Claude Code，配置 DeepSeek，并使用 AionUi 独立桌面界面的完整操作手册。"><title>Claude Code 桌面上手指南</title><style>
+:root{--ink:#172d48;--muted:#607087;--blue:#2459d3;--pale:#eef4ff;--line:#dce5f0;--bg:#f5f8fc}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.9 "Segoe UI","Microsoft YaHei",sans-serif}a{color:var(--blue);text-underline-offset:4px}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #e9b647;outline-offset:4px}.topbar{height:72px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:20}.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.3px}.brandmark{width:32px;height:32px;background:var(--blue);border-radius:9px;color:white;display:grid;place-items:center;font-size:19px}.topright{display:flex;align-items:center;gap:20px;font-size:13px;color:var(--muted)}.print{border:1px solid var(--line);padding:7px 14px;background:white;border-radius:7px;color:var(--ink)}.layout{display:grid;grid-template-columns:240px minmax(0,960px);gap:48px;max-width:1310px;margin:auto;padding:40px 28px}.sidebar{position:sticky;top:108px;height:calc(100vh - 135px);overflow:auto}.nav-title{font-size:12px;color:var(--muted);padding:0 12px;margin-bottom:14px}.sidebar nav a{display:flex;align-items:center;gap:14px;color:var(--muted);text-decoration:none;padding:8px 12px;margin-bottom:3px;border-radius:7px;font-size:14px}.sidebar nav a span{font-size:11px;color:#8394ad}.sidebar nav a:hover,.sidebar nav a.active{background:#e7efff;color:var(--blue)}.sidebar nav a.active{font-weight:650}.sidebar-bottom{border-top:1px solid var(--line);padding:20px 12px;margin-top:22px;font-size:12px;color:var(--muted)}.sidebar-bottom strong{font-size:14px;color:var(--ink);display:block}.hero{background:#eaf1ff;border:1px solid #d3e1ff;border-radius:18px;padding:44px 44px 30px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:235px;height:235px;border:35px solid #dce8ff;right:-105px;top:-90px;border-radius:50%;pointer-events:none}.badge{display:inline-flex;gap:8px;align-items:center;background:white;color:var(--blue);font-size:12px;border:1px solid #d3e1ff;border-radius:30px;padding:3px 11px}.badge i{width:6px;height:6px;border-radius:50%;background:var(--blue)}h1{font-size:clamp(30px,3vw,44px);line-height:1.35;letter-spacing:-1px;margin:23px 0 16px;font-weight:720;position:relative;z-index:1}.hero>p{max-width:570px;color:#536a89;font-size:15px;margin:0 0 28px}.hero-meta{display:flex;gap:22px;color:#526b90;font-size:12px;flex-wrap:wrap}.pipeline{display:flex;margin:28px 0 0;border-top:1px solid #cedcf5;padding-top:23px;gap:0;align-items:center}.pipeline div{flex:1}.pipeline b{font-size:14px;display:block}.pipeline small{font-size:11px;color:#647c9e}.pipeline>span{color:#8ea6cc;margin-right:20px}.read-note{display:flex;gap:12px;padding:20px 4px;color:var(--muted);font-size:13px}.read-note b{color:var(--blue);white-space:nowrap}.intro{padding:0 4px 6px;color:var(--muted);font-size:13px}.intro p{margin:8px 0}.intro p:first-child{display:none}section{background:white;border:1px solid var(--line);border-radius:12px;padding:30px 36px;margin:22px 0;scroll-margin-top:95px}.section-heading{display:flex;align-items:center;gap:14px;margin-bottom:22px}.section-heading>span{color:var(--blue);background:var(--pale);border:1px solid #d8e5ff;border-radius:8px;width:38px;height:38px;display:grid;place-items:center;font-size:13px;flex-shrink:0}h2{font-size:23px;line-height:1.5;margin:0;font-weight:680}h3{font-size:17px;margin:30px 0 13px;padding-bottom:9px;border-bottom:1px solid #edf1f7}p{margin:13px 0}ol,ul{padding-left:23px}li{margin:9px 0;padding-left:3px}li::marker{color:#6780a2}strong{font-weight:650}code{font-family:Consolas,"Microsoft YaHei",monospace;font-size:13px;padding:2px 6px;border-radius:4px;background:#eef3fa;color:#285181;overflow-wrap:anywhere}pre{position:relative;background:#132b48;color:#e4efff;border-radius:9px;padding:49px 20px 20px;overflow:auto;line-height:1.7;margin:18px 0}pre code{padding:0;background:none;color:inherit;font-size:12.5px;overflow-wrap:normal}pre:before{content:attr(data-language);position:absolute;top:12px;left:20px;color:#99b6db;font-size:11px}.copy{position:absolute;right:10px;top:8px;padding:3px 11px;border:1px solid #46607f;background:#203d5e;color:#dfeafa;border-radius:5px;font-size:11px}.table-wrap{overflow:auto;margin:20px 0;border:1px solid var(--line);border-radius:8px}table{width:100%;border-collapse:collapse;font-size:13px;text-align:left}th{background:#f1f6fd;color:#526c8f;font-weight:600}th,td{padding:12px 15px;border-bottom:1px solid #e5ecf5;min-width:110px}td{vertical-align:top}tr:last-child td{border-bottom:0}td:first-child{width:29%;color:#344f70}blockquote{margin:18px 0;border-left:3px solid #7c9ee9;background:#f2f6ff;padding:8px 19px;color:#3b5982;border-radius:0 7px 7px 0}blockquote p{margin:6px 0}.check-item{list-style:none;margin-left:-24px;border-bottom:1px solid #edf1f7;padding:10px 0;margin-top:0;margin-bottom:0}.check-item label{display:flex;gap:12px;align-items:flex-start;cursor:pointer}.check-item input{margin-top:8px;accent-color:var(--blue);width:17px;height:17px;flex-shrink:0}.check-item:has(input:checked) span{color:#74869d;text-decoration:line-through}.progressline{height:3px;position:absolute;bottom:-1px;left:0;background:var(--blue);width:0}.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#193550;color:white;padding:9px 22px;border-radius:8px;font-size:13px;z-index:40;opacity:0;pointer-events:none}.toast.show{opacity:1}.mobile-nav{display:none}footer{color:var(--muted);font-size:12px;padding:16px 4px 35px;display:flex;justify-content:space-between;gap:20px}.done-count{color:var(--blue);font-size:13px;font-weight:600}.footer-link{white-space:nowrap}#step-8{border-top:3px solid #d6a644}#step-8 .section-heading>span{background:#fff8e7;color:#9c7520;border-color:#f3e1ad}
+.download-resources{background:white;border:1px solid var(--line);border-radius:12px;padding:28px 30px;margin:12px 0 24px}.download-resources>div>p{font-size:13px;color:var(--muted);margin:8px 0 20px}.download-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.download-grid article{display:flex;gap:12px;align-items:flex-start;background:#f6f9ff;padding:18px;border-radius:9px}.file-kind{font-size:11px;font-weight:700;display:grid;place-items:center;width:38px;height:44px;border:1px solid #c8d9f8;border-radius:5px;color:var(--blue);background:#eaf1ff;flex-shrink:0}.download-grid h3{font-size:14px;margin:0;padding:0;border:0}.download-grid p{font-size:11px;color:var(--muted);margin:5px 0 12px}.download-grid button{display:block;border:1px solid #d8e3f4;background:#edf2fa;color:#7b8da7;border-radius:6px;padding:7px 12px;font-size:12px;cursor:not-allowed}.download-grid a{display:inline-block;font-size:11px;margin-top:8px}.download-resources>small{display:block;color:var(--muted);font-size:11px;margin-top:18px}@media(max-width:950px){.download-grid{grid-template-columns:1fr}}@media(max-width:720px){.download-resources{padding:23px 20px}}@media print{.download-grid button{display:none}}
+.author-link{font-size:13px;text-decoration:none}.download-grid a.official-download{background:var(--blue);color:white;text-decoration:none;padding:8px 14px;border-radius:6px;font-size:12px;margin-top:0}.star-section{background:#eaf1ff;border:1px solid #cfddf7;border-radius:12px;padding:34px 36px;margin-top:25px}.star-section h2{font-size:23px;margin-top:8px}.star-symbol{font-size:35px;color:#2459d3;line-height:1}.star-section p{font-size:14px;color:var(--muted)}.star-actions{display:flex;gap:22px;align-items:center;margin-top:20px}.star-actions>a{font-size:13px}.star-button{background:#2459d3;color:white;padding:10px 18px;border-radius:7px;text-decoration:none}.star-actions>a:not(.star-button){color:#526b90}.star-section .star-button:hover,.official-download:hover{background:#1745b1}@media(max-width:720px){.star-section{padding:25px 22px}.star-actions{flex-wrap:wrap;gap:14px}.topright{gap:12px}.author-link{font-size:11px}}@media print{.star-section{background:white;break-inside:avoid}}
+.download-options{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.download-grid .pan-download{padding:7px 13px;border:1px solid #c5d7fa;border-radius:6px;background:white;color:#2459d3;text-decoration:none;font-size:12px;margin:0}.pan-code{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);margin-top:12px}.pan-code code{font-size:12px;letter-spacing:1px}.download-grid .pan-code button{display:inline-flex;align-items:center;padding:2px 8px;background:transparent;color:#2459d3;border:0;cursor:pointer;font-size:11px}.pan-download:hover{background:#eaf1ff}.download-grid article>div{min-width:0}@media print{.pan-code .copy-code{display:none}}
+@media(min-width:1500px){.layout{gap:70px}}@media(max-width:1000px){.layout{grid-template-columns:195px minmax(0,1fr);gap:24px;padding:28px 20px}.hero{padding:30px}section{padding:26px}.topright>span{display:none}.pipeline>span{margin-right:10px}.pipeline b{font-size:12px}}@media(max-width:720px){.topbar{height:62px;padding:0 18px}.brand{font-size:14px}.print{font-size:12px;padding:5px 10px}.layout{display:block;padding:20px 14px}.sidebar{display:none}.hero{padding:26px 22px 23px;border-radius:12px}.hero>p{font-size:14px}.hero-meta{gap:12px}.pipeline{flex-wrap:wrap;gap:15px}.pipeline div{flex-basis:40%}.pipeline>span{display:none}.pipeline b{font-size:13px}section{padding:24px 20px;margin:16px 0}h2{font-size:20px}.section-heading{gap:11px}.mobile-nav{display:block;margin:18px 0;width:100%;padding:11px;background:white;border:1px solid var(--line);border-radius:7px;color:var(--ink);font:inherit}body{font-size:14px}.read-note{padding:16px 2px;font-size:12px}footer{display:block}pre{margin-left:-5px;margin-right:-5px}td,th{padding:10px}h1{letter-spacing:-.5px}}
+@media print{.topbar,.sidebar,.mobile-nav,.copy,.toast,.read-note{display:none}.layout{display:block;padding:0;max-width:none}.hero{background:white;padding:15px;border:0}.hero:after{display:none}section{border:0;border-top:1px solid #bbb;padding:15px 0;border-radius:0;break-inside:auto}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f4f7;color:#172d48;border:1px solid #bbb}pre code{white-space:pre-wrap;color:#172d48}.table-wrap{overflow:visible}a{color:#172d48}body{font-size:10pt;background:white}.intro{display:none}h2,h3{break-after:avoid}.check-item input{appearance:auto}footer{display:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<header class="topbar"><div class="brand"><span class="brandmark" aria-hidden="true">⌘</span>桌面 AI 安装指南</div><div class="topright"><a href="https://github.com/lesifh" class="author-link">lesifh / GitHub</a><button type="button" class="print">打印 / 存为 PDF</button></div><div class="progressline"></div></header>
+<div class="layout"><aside class="sidebar"><div class="nav-title">跟着步骤，完成安装</div><nav aria-label="手册章节"><a href="#step-1"><span>01</span>方案概览</a><a href="#step-2"><span>02</span>下载与账户</a><a href="#step-3"><span>03</span>一键部署</a><a href="#step-4"><span>04</span>配置 DeepSeek</a><a href="#step-5"><span>05</span>验证命令行</a><a href="#step-6"><span>06</span>连接 AionUi</a><a href="#step-7"><span>07</span>找不到 Agent</a><a href="#step-8"><span>08</span>认证问题排查</a><a href="#step-9"><span>09</span>常见问题</a><a href="#step-10"><span>10</span>日常使用</a><a href="#step-11"><span>11</span>安装验收</a><a href="#step-12"><span>12</span>参考资料</a></nav><div class="sidebar-bottom"><strong>最后一步，别忘了验收。</strong><p>确认从桌面重新打开后，仍能正常对话和操作文件。</p><span class="done-count"></span></div></aside><main>
+<div class="hero"><span class="badge"><i></i>Windows 11 · 完整操作手册</span><h1>让 Claude Code，<br>拥有自己的桌面窗口。</h1><p>用一键部署工具完成安装，接入 DeepSeek，再通过 AionUi 直接对话、查看文件和完成任务。</p><div class="hero-meta"><span>适用：Intel / AMD x64</span><span>核对：2026.10.30</span><span>安装后需实机验收</span></div><div class="pipeline"><div><b>一键部署</b><small>装好运行环境</small></div><span>›</span><div><b>CC Switch</b><small>配置 DeepSeek</small></div><span>›</span><div><b>Claude Code</b><small>验证任务执行</small></div><span>›</span><div><b>AionUi</b><small>连接桌面界面</small></div></div></div>
+<div class="read-note"><b>开始前</b><span>先让命令行调用成功，再连接桌面端。这样遇到问题时，排查会更清楚。</span></div><select class="mobile-nav" aria-label="跳转到章节"><option value="step-1">01　方案概览</option><option value="step-2">02　下载与账户</option><option value="step-3">03　一键部署</option><option value="step-4">04　配置 DeepSeek</option><option value="step-5">05　验证命令行</option><option value="step-6">06　连接 AionUi</option><option value="step-7">07　找不到 Agent</option><option value="step-8">08　认证问题排查</option><option value="step-9">09　常见问题</option><option value="step-10">10　日常使用</option><option value="step-11">11　安装验收</option><option value="step-12">12　参考资料</option></select><div class="download-resources"><div><h2>安装文件下载</h2><p>适用 Windows 11 x64。可选官方来源或百度网盘。网盘提供下方标注版本，官方来源可获取更新版本。</p></div><div class="download-grid"><article><span class="file-kind">ZIP</span><div><h3>Claude Code 一键部署包</h3><p>v1.0.0 · 26.5 KB · 解压后运行</p><div class="download-options"><a class="official-download" href="https://github.com/K1evL/claudecode-setup/releases/latest">项目发布页</a><a class="pan-download" href="https://pan.baidu.com/s/1OdV4pLXvN5Gq1OY7UYYQQg?pwd=x94h">百度网盘下载</a></div><div class="pan-code">提取码 <code>x94h</code><button type="button" class="copy-code" data-code="x94h" aria-label="复制提取码 x94h">复制</button></div></div></article><article><span class="file-kind">EXE</span><div><h3>AionUi 桌面客户端</h3><p>v2.2.2 · 171.9 MB · Windows x64</p><div class="download-options"><a class="official-download" href="https://www.aionui.com/download/">官方网站</a><a class="pan-download" href="https://pan.baidu.com/s/1XyxHAXHe1M-DN9nht0R76Q?pwd=9bcd">百度网盘下载</a></div><div class="pan-code">提取码 <code>9bcd</code><button type="button" class="copy-code" data-code="9bcd" aria-label="复制提取码 9bcd">复制</button></div></div></article></div><small>官方入口指向原项目发布页或软件官网；百度网盘为作者提供的备用下载。请按需选择。本页不收集 API Key。</small></div><div class="intro"><p>核对日期：2026 年 10 月 30 日。</p>
+<p>适用于普通 Intel / AMD x64 的 Windows 11 电脑。ARM Windows 不建议直接套用本文的一键安装器：当前源码的架构检测及安装包选择没有充分区分 ARM64。</p>
+<p>本手册根据项目发布页、安装源码和官方说明整理，尚未完成实机安装验证。软件版本变化时，以实际界面为准。</p>
+</div><section id="step-1"><div class="section-heading"><span>01</span><h2>最终使用方式</h2></div>
+<p><strong>打开 AionUi → 选择 Claude Code → 打开项目文件夹 → 用中文提出任务。</strong></p>
+<p>各部分的分工：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>部分</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一键部署工具</td>
+<td>帮助安装 Node.js、Claude Code、CC Switch</td>
+</tr>
+<tr>
+<td>CC Switch</td>
+<td>设置 Claude Code 使用的 DeepSeek 地址、Key 和模型</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>负责读写文件、执行命令和完成任务</td>
+</tr>
+<tr>
+<td>DeepSeek</td>
+<td>提供模型推理，费用计入 DeepSeek API 账户</td>
+</tr>
+<tr>
+<td>AionUi</td>
+<td>提供独立桌面窗口，连接本机 Claude Code</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>新建会话时选 Claude Code。</strong> AionUi 的“内置 Agent / Built-in Agent”是另一套执行系统，不是本文要配置的方案。外部 Agent 使用各自的认证和配置。<a href="https://github.com/iOfficeAI/AionUi/wiki/ACP-Setup">AionUi 接入说明</a></p>
+</section><section id="step-2"><div class="section-heading"><span>02</span><h2>准备下载与账户</h2></div>
+<p>在日常使用的 Windows 账户下操作，准备以下内容：</p>
+<ol>
+<li><a href="https://github.com/K1evL/claudecode-setup/releases">一键部署项目发布页</a>。当前发布包为 <code>claudecode-setup.zip</code>。</li>
+<li><a href="https://github.com/farion1231/cc-switch/releases/latest">CC Switch 发布页</a>。安装器未成功安装 CC Switch 时使用。</li>
+<li><a href="https://www.aionui.com/download/">AionUi 官方下载页</a>。普通电脑选 Windows x64 安装包。</li>
+<li><a href="https://platform.deepseek.com/">DeepSeek 开放平台</a>。创建自己的 API Key，并确认 API 账户有可用余额或额度。</li>
+</ol>
+<p>注意：AionUi 当前 GitHub 发布说明写明安装包已不再放在 GitHub，需从官网获取；旧教程中的“在 GitHub Assets 找 EXE”不一定适用。<a href="https://github.com/iOfficeAI/AionUi/releases/latest">AionUi 发布说明</a></p>
+<p>妥善保管 Key，后续在本机填写。不要放到项目文件、聊天截图或公开仓库。</p>
+</section><section id="step-3"><div class="section-heading"><span>03</span><h2>运行一键部署工具</h2></div>
+<h3>3.1 下载并解压</h3>
+<ol>
+<li>打开一键部署项目的 <a href="https://github.com/K1evL/claudecode-setup/releases">Releases 页面</a>。</li>
+<li>展开 <strong>Assets</strong>，下载 <code>claudecode-setup.zip</code>，不是 Source code 源码包。</li>
+<li>右键 ZIP →“全部解压”，例如解压到“下载”中的 <code>claudecode-setup</code> 文件夹。</li>
+<li>在解压后的文件夹找到 <code>ClaudeCode-Setup.exe</code>，保留压缩包里与它配套的文件，例如 <code>.exe.config</code>，不要只移走 EXE。</li>
+</ol>
+<p>这是第三方社区安装器，并非 Anthropic 官方安装程序。当前源码会配置 npm 镜像、全局安装目录和 Path，并可能修改 PowerShell 执行策略。已有 Node.js 开发环境的电脑先记录原配置；已有重要 CC Switch 配置时先备份。<a href="https://github.com/K1evL/claudecode-setup/blob/main/src/scripts/install.ps1">安装脚本</a></p>
+<h3>3.2 安装</h3>
+<ol>
+<li>右键 <code>ClaudeCode-Setup.exe</code> → <strong>以管理员身份运行</strong>。</li>
+<li>核对程序来源后确认 Windows 权限提示。</li>
+<li>等待安装完成，保留末尾报告和日志位置。时间取决于网络，下载较慢时可能超过项目说明的几分钟。</li>
+<li>退出安装器，关闭已有终端，再重开一个普通 PowerShell。</li>
+</ol>
+<p>管理员权限仅用于此安装器；以后运行 AionUi、CC Switch 和 Claude Code 使用普通权限。</p>
+<h3>3.3 独立验证安装结果</h3>
+<p>在 PowerShell 逐行执行：</p>
+<pre><code class="language-powershell">node --version
+npm.cmd --version
+claude --version
+where.exe claude
+</code></pre>
+<p>前三条应显示版本，最后一条应显示 Claude Code 入口位置。</p>
+<p><strong>不要仅凭安装器显示“完成”就认定所有组件成功。</strong> 当前源码会在部分安装失败时继续生成报告，需要以上面的真实结果为准。<a href="https://github.com/K1evL/claudecode-setup/blob/main/src/modules/CcSwitchInstaller.psm1">安装模块</a></p>
+<p>若 <code>claude</code> 找不到，先重启 Windows 后重试。仍失败时，如果 Node/npm 正常，可在普通 PowerShell 补装：</p>
+<pre><code class="language-powershell">npm.cmd install -g @anthropic-ai/claude-code --registry=https://registry.npmjs.org
+</code></pre>
+<p>然后重开终端执行 <code>claude --version</code>。如果 npm 报 Node 版本不支持，先从 <a href="https://nodejs.org/">Node.js 官网</a>升级到当前 LTS，再重试，不要忽略版本错误继续配置。</p>
+<p>本流程通过 CC Switch 填写 Key，<strong>不需要执行安装器 README 中的 <code>claude set-key</code> 或 <code>cc-switch config set</code> 示例</strong>；这些不是本文采用的配置方法。</p>
+<h3>3.4 检查 Git</h3>
+<p>当前查看到的一键安装主流程没有安装 Git 的步骤，因此单独验证：</p>
+<pre><code class="language-powershell">git --version
+</code></pre>
+<p>如未安装，从 <a href="https://git-scm.com/install/windows">Git 官方下载页</a>下载 x64 安装程序，通常保留默认选项。安装后重开终端，再验证版本。Git 为项目版本管理和 Claude Code 的 Bash 工具提供支持。</p>
+</section><section id="step-4"><div class="section-heading"><span>04</span><h2>通过 CC Switch 配置 DeepSeek</h2></div>
+<h3>4.1 打开或补装 CC Switch</h3>
+<p>在桌面或开始菜单打开 CC Switch。若没有安装成功，从 <a href="https://github.com/farion1231/cc-switch/releases/latest">官方发布页</a>下载普通 Windows 的 <code>.msi</code> 安装包，完成安装。</p>
+<h3>4.2 添加并启用 DeepSeek</h3>
+<ol>
+<li>左侧选择 <strong>Claude Code</strong>。</li>
+<li>使用 <strong>直连</strong>模式；如已开启路由或聚合，选择“回到直连”。</li>
+<li>点击 <strong>添加供应商 / +</strong>，搜索 <strong>DeepSeek</strong>，选择厂商官方预设。</li>
+<li>名称填 <code>DeepSeek 官方</code>，Key 填自己的 DeepSeek API Key。</li>
+<li>按下表核对模型配置，保存后点击卡片上的 <strong>启用</strong>。</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base URL</td>
+<td><code>https://api.deepseek.com/anthropic</code></td>
+</tr>
+<tr>
+<td>API 格式（如有）</td>
+<td>Anthropic / Anthropic Messages</td>
+</tr>
+<tr>
+<td>默认模型</td>
+<td><code>deepseek-flash[1m]</code></td>
+</tr>
+<tr>
+<td>Opus 映射</td>
+<td><code>deepseek-flash[1m]</code></td>
+</tr>
+<tr>
+<td>Sonnet 映射</td>
+<td><code>deepseek-flash[1m]</code></td>
+</tr>
+<tr>
+<td>Haiku 映射</td>
+<td><code>deepseek-flash</code></td>
+</tr>
+<tr>
+<td>子代理模型（可添加）</td>
+<td><code>deepseek-flash</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>此处使用核对日的 <a href="https://api-docs.deepseek.com/guides/coding_agents/">DeepSeek 官方 Claude Code 接入参数</a>。未来模型调整时跟随该文档。三档名称只是映射入口，实际调用的是表中的 DeepSeek 模型。</p>
+<p>URL 包含 <code>/anthropic</code>，不要再自行追加 <code>/v1/messages</code>。本方案不需要启用本地路由。</p>
+<h3>4.3 可核对的配置示例</h3>
+<p>若需要补充字段，在 CC Switch 的供应商配置编辑区域使用下面的 <code>env</code>。占位内容替换为真实 Key；有其他配置时合并，不要覆盖整份已有设置。</p>
+<pre><code class="language-json">{
+  &quot;env&quot;: {
+    &quot;ANTHROPIC_BASE_URL&quot;: &quot;https://api.deepseek.com/anthropic&quot;,
+    &quot;ANTHROPIC_AUTH_TOKEN&quot;: &quot;替换为自己的DeepSeek_API_Key&quot;,
+    &quot;ANTHROPIC_MODEL&quot;: &quot;deepseek-flash[1m]&quot;,
+    &quot;ANTHROPIC_DEFAULT_OPUS_MODEL&quot;: &quot;deepseek-flash[1m]&quot;,
+    &quot;ANTHROPIC_DEFAULT_SONNET_MODEL&quot;: &quot;deepseek-flash[1m]&quot;,
+    &quot;ANTHROPIC_DEFAULT_HAIKU_MODEL&quot;: &quot;deepseek-flash&quot;,
+    &quot;CLAUDE_CODE_SUBAGENT_MODEL&quot;: &quot;deepseek-flash&quot;,
+    &quot;CLAUDE_CODE_EFFORT_LEVEL&quot;: &quot;max&quot;
+  }
+}
+</code></pre>
+<p>字段按 <a href="https://api-docs.deepseek.com/guides/coding_agents/">DeepSeek 官方指南</a>列出。<code>max</code> 是其示例中的思考强度。</p>
+<p>如果 Claude Code 首次启动仍要求 Claude 官方登录，退出后，在 <strong>CC Switch → 设置 → 应用配置 → Claude Code</strong> 开启 <strong>跳过 Claude Code 初次安装确认</strong>，再启动。它只处理首次引导，API 仍需有效 Key。<a href="https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/zh/1-getting-started/1.5-settings.md">CC Switch 设置说明</a></p>
+</section><section id="step-5"><div class="section-heading"><span>05</span><h2>先验证 Claude Code 本身</h2></div>
+<p>先通过这一关，再安装连接 AionUi，避免同时排查两层问题。</p>
+<p>在普通 PowerShell 运行：</p>
+<pre><code class="language-powershell">New-Item -ItemType Directory -Force -Path &quot;$env:USERPROFILE\Documents\AI-Test&quot;
+Set-Location &quot;$env:USERPROFILE\Documents\AI-Test&quot;
+claude
+</code></pre>
+<p>若提示信任目录，核对确实是刚建的测试目录后继续。在对话框输入：</p>
+<blockquote>
+<p>请只回复“连接成功”，暂时不要运行命令或读写文件。</p>
+</blockquote>
+<p>正常回复后，再输入：</p>
+<blockquote>
+<p>请在当前文件夹创建 hello.txt，内容为“你好，DeepSeek！”，然后读取这个文件并展示内容。</p>
+</blockquote>
+<p>核对操作目标后允许。打开“文档 → AI-Test”，确认文件存在且内容正确。再查看 DeepSeek 平台是否有相应用量，可能存在显示延迟。</p>
+<p>完成后退出 Claude Code，再开一个全新的 PowerShell 重试对话。新窗口仍能调用，说明配置已经持久保存，而不只是当前终端的临时变量生效。</p>
+</section><section id="step-6"><div class="section-heading"><span>06</span><h2>安装 AionUi 并选择 Claude Code</h2></div>
+<h3>6.1 安装桌面客户端</h3>
+<ol>
+<li>打开 <a href="https://www.aionui.com/download/">AionUi 官方下载页</a>，选择 Windows x64 安装包。</li>
+<li>运行安装程序，按提示完成。</li>
+<li>用日常账户、普通权限启动 AionUi。首次使用按实际界面选择中文。</li>
+</ol>
+<h3>6.2 连接已安装的 Claude Code</h3>
+<ol>
+<li>启动后，在首页或新建会话区域查看检测到的 Agent。</li>
+<li>选择 <strong>Claude Code</strong>。AionUi 官方说明支持扫描 Path 检测本机 <code>claude</code> 命令。</li>
+<li>选择工作文件夹：刚才的“文档 → AI-Test”。</li>
+<li>新建会话。确认该会话绑定的是 <strong>Claude Code</strong>。</li>
+<li>如果出现模型列表，核对当前选择对应 DeepSeek 配置。不要随意改为其他模型名称。</li>
+</ol>
+<p>这里不用在 AionUi 的“设置 → 模型”里另建一个内置 Agent 的 DeepSeek 配置；外部 Claude Code 的配置由 Claude Code / CC Switch 管理。按钮位置随版本变化，以界面实际显示的 Claude Code 入口为准。<a href="https://github.com/iOfficeAI/AionUi/wiki/ACP-Setup">外部 Agent 说明</a></p>
+<h3>6.3 在图形界面验收</h3>
+<p>输入：</p>
+<blockquote>
+<p>请读取当前文件夹中的 hello.txt，并原样展示内容。暂时不要修改文件。</p>
+</blockquote>
+<p>收到正确内容后，再输入：</p>
+<blockquote>
+<p>请在当前文件夹创建 gui-test.txt，写入“这是通过 AionUi 调用 Claude Code 完成的测试”，并读取它确认内容。</p>
+</blockquote>
+<p>核对权限提示和路径后允许。确认文件真实存在，不只看聊天中是否说“完成”。</p>
+<p><strong>通过标准：Claude Code 会话身份正确、能回复、能读取已有文件、能创建新文件，并且退出 AionUi 后从桌面重新打开仍可使用。</strong></p>
+</section><section id="step-7"><div class="section-heading"><span>07</span><h2>AionUi 找不到 Claude Code</h2></div>
+<p>按顺序检查：</p>
+<ol>
+<li>完全退出 AionUi，包括系统托盘中的后台进程，再重新打开。</li>
+<li>如刚安装环境或改过 Path，先重启 Windows。</li>
+<li>在普通 PowerShell 执行：</li>
+</ol>
+<pre><code class="language-powershell">where.exe claude
+claude --version
+</code></pre>
+<p>如果命令行也失败，先修复第 3 节。若只在 AionUi 中检测不到，从同一个能运行 <code>claude</code> 的 PowerShell 启动 AionUi，检查是否是桌面进程尚未继承新 Path。</p>
+<p>启动方法：右键 AionUi 快捷方式 → 属性，查看实际程序的“目标”。在 PowerShell 使用实际 EXE 路径，例如：</p>
+<pre><code class="language-powershell">Start-Process -FilePath '替换为快捷方式中实际的AionUi.exe完整路径' -WindowStyle Hidden
+</code></pre>
+<p>先退出旧 AionUi，否则命令可能只激活原有进程。这里的示例路径必须替换；不要原样复制占位文字。</p>
+<p>不要直接把 <code>claude</code> 加进自定义 ACP Agent 就假定能用；裸 CLI 和 ACP 适配器的启动方式并不相同，应优先使用 AionUi 内置的 Claude Code 集成。<a href="https://github.com/iOfficeAI/AionUi/wiki/ACP-Setup">检测与适配说明</a></p>
+</section><section id="step-8"><div class="section-heading"><span>08</span><h2>命令行能用，但 AionUi 提示未认证</h2></div>
+<p>项目中有 Windows + DeepSeek 出现 <code>Agent requires authentication</code> 的反馈，维护者要求检查版本和变量是否只设置在终端里。因此这套组合需要实机验收，不能保证所有版本都开箱即用。<a href="https://github.com/iOfficeAI/AionUi/issues/3095">相关问题记录</a></p>
+<p>先做以下检查：</p>
+<ol>
+<li>确认选的是 Claude Code 会话。</li>
+<li>确认 CC Switch 已启用 DeepSeek，而非只保存了一张卡。</li>
+<li>确认第 5 节“新开终端仍能调用”已通过。</li>
+<li>确认 AionUi 与 CC Switch、Claude Code 使用同一 Windows 用户。</li>
+<li>如果电脑以前设置过 <code>CLAUDE_CONFIG_DIR</code>，核对它是否指向不同配置目录。</li>
+<li>记录当前版本后升级 AionUi，必要时升级 Claude Code，再重新测试。</li>
+</ol>
+<h3>8.1 诊断性尝试：把已保存配置传给 AionUi</h3>
+<p>以下是排查环境变量传递问题的方法，不是保证修复所有认证错误的官方补丁。</p>
+<p>先完全退出 AionUi。新开普通 PowerShell，运行下面的代码：它从当前用户默认 Claude Code 配置读取指定连接变量，只放入此 PowerShell 及其子进程，不打印 Key、不写入系统变量。</p>
+<pre><code class="language-powershell">$claudeSettingsPath = Join-Path $env:USERPROFILE '.claude\settings.json'
+$claudeSavedSettings = Get-Content -LiteralPath $claudeSettingsPath -Raw | ConvertFrom-Json
+if ($claudeSavedSettings.env.ANTHROPIC_BASE_URL -ne 'https://api.deepseek.com/anthropic') {
+    throw '当前默认配置不是预期的 DeepSeek 直连地址，请先在 CC Switch 中启用 DeepSeek。'
+}
+if ([string]::IsNullOrWhiteSpace($claudeSavedSettings.env.ANTHROPIC_AUTH_TOKEN)) {
+    throw '当前配置缺少 DeepSeek Token，请先补全供应商配置。'
+}
+$claudeConnectionNames = @(
+    'ANTHROPIC_BASE_URL',
+    'ANTHROPIC_AUTH_TOKEN',
+    'ANTHROPIC_MODEL',
+    'ANTHROPIC_DEFAULT_OPUS_MODEL',
+    'ANTHROPIC_DEFAULT_SONNET_MODEL',
+    'ANTHROPIC_DEFAULT_HAIKU_MODEL',
+    'CLAUDE_CODE_SUBAGENT_MODEL',
+    'CLAUDE_CODE_EFFORT_LEVEL'
+)
+foreach ($connectionName in $claudeConnectionNames) {
+    $connectionValue = $claudeSavedSettings.env.$connectionName
+    if (-not [string]::IsNullOrWhiteSpace($connectionValue)) {
+        [Environment]::SetEnvironmentVariable($connectionName, [string]$connectionValue, 'Process')
+    }
+}
+</code></pre>
+<p>随后在同一个窗口，用第 7 节的方法启动真实路径的 AionUi，再新建 Claude Code 会话测试。</p>
+<p>如果这样可以调用，但桌面双击仍失败，就说明日常启动的配置传递还没解决，暂不能算安装验收通过。应检查该版本的集成配置，或携带遮盖 Key 的版本信息、错误和日志向 AionUi 项目反馈。</p>
+<p>如果仍提示认证失败，不要为此填写一个虚假的 Claude Key、删除全部配置或关闭权限控制。保留能正常工作的 Claude Code 配置，先把 AionUi 的适配错误查清。</p>
+</section><section id="step-9"><div class="section-heading"><span>09</span><h2>其他常见问题</h2></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>现象</th>
+<th>处理方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CC Switch 没有快捷方式 / 安装失败</td>
+<td>从 CC Switch 官方发布页补装，验证能打开。</td>
+</tr>
+<tr>
+<td>安装器卡住或报下载失败</td>
+<td>看安装日志中失败的组件，检查网络；不要反复重跑覆盖已经正常的组件。</td>
+</tr>
+<tr>
+<td><code>claude.ps1</code> 被执行策略阻止</td>
+<td>尝试 <code>claude.cmd --version</code>；不要为了这一点继续降低全系统执行策略。</td>
+</tr>
+<tr>
+<td>Git Bash 找不到</td>
+<td>安装 Git；确有 <code>C:\Program Files\Git\bin\bash.exe</code> 时，可在 CC Switch 供应商 env 增加 <code>CLAUDE_CODE_GIT_BASH_PATH</code> 指向实际路径。</td>
+</tr>
+<tr>
+<td>401 / Key 无效</td>
+<td>核对 DeepSeek Key 完整、没有空格，确认当前供应商已启用。</td>
+</tr>
+<tr>
+<td>余额不足</td>
+<td>到 DeepSeek 开放平台检查 API 余额。</td>
+</tr>
+<tr>
+<td>404</td>
+<td>检查地址是否为 <code>https://api.deepseek.com/anthropic</code>，协议是否为 Anthropic。</td>
+</tr>
+<tr>
+<td>400 / 模型不存在</td>
+<td>根据 DeepSeek 官方当前指南更新模型名和各档映射。</td>
+</tr>
+<tr>
+<td>CC Switch 检测连通成功，聊天失败</td>
+<td>连通检测不代表 Key 和模型有效，必须实际发消息。</td>
+</tr>
+<tr>
+<td>AionUi 模型页配好了 DeepSeek，但 Claude Code 会话没变化</td>
+<td>模型页主要配置 AionUi 自己的模型；回 CC Switch 检查 Claude Code 的供应商。</td>
+</tr>
+<tr>
+<td>修改配置后仍用旧模型</td>
+<td>完全退出旧会话及 AionUi，检查旧环境变量和项目模型设置，再重启测试。</td>
+</tr>
+</tbody>
+</table></div>
+</section><section id="step-10"><div class="section-heading"><span>10</span><h2>日常使用</h2></div>
+<ol>
+<li>双击桌面 AionUi。</li>
+<li>新建 <strong>Claude Code</strong> 会话。</li>
+<li>选择要处理的项目文件夹。</li>
+<li>输入具体任务，例如：“先阅读项目，告诉我怎么运行，暂时不要修改文件。”</li>
+<li>查看文件修改与命令请求，再允许操作。</li>
+<li>更换 API Key 或模型时，在 CC Switch 修改、保存并启用，再重开 AionUi 会话。</li>
+</ol>
+<p>不要把不同的项目都放在同一个会话里。重要项目在修改前先备份或提交 Git。</p>
+</section><section id="step-11"><div class="section-heading"><span>11</span><h2>安装验收清单</h2></div>
+<ul>
+<li class="check-item"><label><input type="checkbox"> <span>Node/npm、Claude Code 能显示版本，Git 可用。</span></label></li>
+<li class="check-item"><label><input type="checkbox"> <span>普通用户终端可以找到 <code>claude</code>。</span></label></li>
+<li class="check-item"><label><input type="checkbox"> <span>CC Switch 已启用 DeepSeek 直连配置。</span></label></li>
+<li class="check-item"><label><input type="checkbox"> <span>新开终端中的 Claude Code 对话、文件读写成功。</span></label></li>
+<li class="check-item"><label><input type="checkbox"> <span>AionUi 能检测并选择 Claude Code。</span></label></li>
+<li class="check-item"><label><input type="checkbox"> <span>AionUi 中对话、读取 hello.txt、创建 gui-test.txt 成功。</span></label></li>
+<li class="check-item"><label><input type="checkbox"> <span>从桌面重新打开 AionUi 后仍然可用，无需依赖临时终端变量。</span></label></li>
+<li class="check-item"><label><input type="checkbox"> <span>能够在 DeepSeek 平台查看余额和用量。</span></label></li>
+<li class="check-item"><label><input type="checkbox"> <span>已记录 AionUi、Claude Code、CC Switch 的可用版本，Key 已妥善保管。</span></label></li>
+</ul>
+</section><section id="step-12"><div class="section-heading"><span>12</span><h2>参考链接</h2></div>
+<ul>
+<li><a href="https://github.com/K1evL/claudecode-setup">一键部署项目</a></li>
+<li><a href="https://github.com/K1evL/claudecode-setup/releases">一键部署 ZIP 发布页</a></li>
+<li><a href="https://github.com/farion1231/cc-switch/releases/latest">CC Switch 发布页</a></li>
+<li><a href="https://api-docs.deepseek.com/guides/coding_agents/">DeepSeek Claude Code 接入指南</a></li>
+<li><a href="https://www.aionui.com/download/">AionUi 官方下载</a></li>
+<li><a href="https://github.com/iOfficeAI/AionUi/wiki/ACP-Setup">AionUi 外部 Agent 连接说明</a></li>
+<li><a href="https://github.com/iOfficeAI/AionUi/issues/3095">AionUi DeepSeek 认证问题记录</a></li>
+</ul></section>
+<div class="star-section"><div><span class="star-symbol" aria-hidden="true">☆</span><h2>这份指南帮到你了吗？</h2><p>如果这份指南对你有帮助，欢迎在 GitHub 点一个 Star。<br>发现问题或有改进建议，也欢迎提交 Issue。</p><div class="star-actions"><a class="star-button" href="https://github.com/lesifh/claude-code-desktop-guide">☆ 在 GitHub 给个 Star</a><a href="https://github.com/lesifh">作者 lesifh</a></div></div></div><footer><span>本页无需填写 API Key。复制配置后，请仅在本机填写。</span><a class="footer-link" href="#">回到顶部</a></footer></main></div><div class="toast" role="status" aria-live="polite"></div><script>
+const toast=document.querySelector('.toast');let toastTimer;function tell(s){toast.textContent=s;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200)}
+document.querySelectorAll('.copy-code').forEach(button=>{button.addEventListener('click',async()=>{const code=button.dataset.code;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(code)}else{const text=document.createElement('textarea');text.value=code;document.body.appendChild(text);text.select();const copied=document.execCommand('copy');text.remove();if(!copied)throw Error()}tell('提取码 '+code+' 已复制');button.textContent='已复制';setTimeout(()=>button.textContent='复制',1600)}catch{tell('提取码：'+code+'，请手动复制')}})});
+document.querySelectorAll('pre').forEach(pre=>{const code=pre.querySelector('code');pre.dataset.language=code?.className.includes('json')?'JSON 配置':'PowerShell';const b=document.createElement('button');b.className='copy';b.textContent='复制';b.type='button';b.setAttribute('aria-label','复制此段代码');b.onclick=async()=>{const s=code.textContent;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(s)}else{const t=document.createElement('textarea');t.value=s;document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();if(!ok)throw Error()}b.textContent='已复制';setTimeout(()=>b.textContent='复制',1800)}catch{tell('请选中代码后按 Ctrl+C 复制')}};pre.appendChild(b)});
+const checks=[...document.querySelectorAll('.check-item input')];const storageKey='claude-guide-checks-v1';let saved=[];try{saved=JSON.parse(localStorage.getItem(storageKey)||'[]')}catch{}if(!Array.isArray(saved))saved=[];checks.forEach((c,i)=>{c.checked=!!saved[i];c.onchange=()=>{try{localStorage.setItem(storageKey,JSON.stringify(checks.map(x=>x.checked)))}catch{}updateCount()}});function updateCount(){const done=checks.filter(x=>x.checked).length;document.querySelector('.done-count').textContent=`已验收 ${done} / ${checks.length} 项`}updateCount();
+const anchors=[...document.querySelectorAll('nav a')];const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){anchors.forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id));document.querySelector('.mobile-nav').value=e.target.id}})},{rootMargin:'-100px 0px -65% 0px'});document.querySelectorAll('section').forEach(s=>observer.observe(s));
+document.querySelector('.mobile-nav').onchange=e=>{document.getElementById(e.target.value)?.scrollIntoView()};document.querySelector('.print').onclick=()=>window.print();window.addEventListener('scroll',()=>{const range=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progressline').style.width=(range>0?scrollY/range*100:100)+'%'},{passive:true});document.querySelectorAll('a[href^="https://"]').forEach(a=>{a.target='_blank';a.rel='noopener noreferrer'});
+</script></body></html>
